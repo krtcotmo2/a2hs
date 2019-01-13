@@ -9,6 +9,7 @@
 </head>
 
 <body>
+     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
 
   <h2>Sample PWA</h2>
   <h3>Add to Home Screen</h2>
@@ -16,6 +17,9 @@
 
 
 </body>
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Aktf7_Z9wCDTp810PKtql4PbGri_L8b1l_UbQ-hy_Jb1pNpvv9L5aD-TQYNsSVu-&callback=getLocation' async defer></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
 <script>
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
@@ -37,8 +41,8 @@
 
     // Stash the event so it can be triggered later.
     deferredPrompt = e;
-    a2hs.innerHTML = `I'm ready!
-    <button id=\"btnSave\" onclick=\"handleBtnSaveClick()\">Launch</button>`
+//     a2hs.innerHTML = `I'm ready!
+//     <button id=\"btnSave\" onclick=\"handleBtnSaveClick()\">Launch</button>`
 
     return false;
   });
@@ -74,6 +78,24 @@
     }
   }
 
+
+  function getLocation() {
+               let pos, map, thisApi = apiKey;
+               if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                         pos = [position.coords.latitude,position.coords.longitude];
+                         map = new Microsoft.Maps.Map('#myMap', {
+                              center: new Microsoft.Maps.Location(pos[0], pos[1]),
+                              mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                              zoom: 12
+                         }); 
+                    });
+               } else {
+                    $("#myMap").text("Geolocation is not supported by this browser.");
+               }
+
+                       
+          }
 </script>
 
 </html>
