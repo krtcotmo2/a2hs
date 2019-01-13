@@ -1,6 +1,6 @@
 {
      "short_name": "SYD",
-     "name": "Sample PWA Yingray Demo",
+     "name": "My Next Meal",
      "icons": [
        { "src": "images/logo.png", "sizes": "192x192", "type": "image/png" }
      ],
