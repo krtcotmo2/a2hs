@@ -17,10 +17,11 @@
 
 
 </body>
-<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Aktf7_Z9wCDTp810PKtql4PbGri_L8b1l_UbQ-hy_Jb1pNpvv9L5aD-TQYNsSVu-&callback=getLocation' async defer></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Aktf7_Z9wCDTp810PKtql4PbGri_L8b1l_UbQ-hy_Jb1pNpvv9L5aD-TQYNsSVu-&callback=getLocation' async defer></script>
 
 <script>
+
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("sw.js")
@@ -80,7 +81,7 @@
 
 
   function getLocation() {
-               let pos, map, thisApi = apiKey;
+               let pos, map;
                if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                          pos = [position.coords.latitude,position.coords.longitude];
